@@ -4,9 +4,6 @@
  */
 package UI;
 
-import Model.Application;
-import javax.swing.JButton;
-
 /**
  *
  * @author keerthanajagana
@@ -16,14 +13,9 @@ public class MedicineAssignJPanel extends javax.swing.JPanel {
     /**
      * Creates new form MedicineAssignJPanel
      */
-    private Application application;
-    
-
-    MedicineAssignJPanel(Application application) {
+    public MedicineAssignJPanel() {
         initComponents();
-        this.application=application;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,11 +30,11 @@ public class MedicineAssignJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 516, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -9,15 +9,20 @@ package Model;
  * @author keerthanajagana
  */
 public class Medicine {
-    String medicineName;
+    String medName;
     Double dosage;
-
-    public String getMedicineName() {
-        return medicineName;
+    
+    
+    public Medicine(){
+    
     }
 
-    public void setMedicineName(String medicineName) {
-        this.medicineName = medicineName;
+    public String getMedName() {
+        return medName;
+    }
+
+    public void setMedName(String medName) {
+        this.medName = medName;
     }
 
     public Double getDosage() {
@@ -27,6 +32,5 @@ public class Medicine {
     public void setDosage(Double dosage) {
         this.dosage = dosage;
     }
-    
     
 }

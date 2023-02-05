@@ -9,40 +9,51 @@ package Model;
  * @author keerthanajagana
  */
 public class Observation {
-    int observationId;
-    private double bloodPressure;
-    private double temperarture;
+    int obId;
+    private double bp;
+    private double temp;
+    private Medicine med;
     
     public Observation(){
     
+    this.med= new Medicine();
     }
 
-    public int getObservationId() {
-        return observationId;
+    public int getObId() {
+        return obId;
     }
 
-    public void setObservationId(int observationId) {
-        this.observationId = observationId;
+    public void setObId(int obId) {
+        this.obId = obId;
     }
 
-    public double getBloodPressure() {
-        return bloodPressure;
+    public double getBp() {
+        return bp;
     }
 
-    public void setBloodPressure(double bloodPressure) {
-        this.bloodPressure = bloodPressure;
+    public void setBp(double bp) {
+        this.bp = bp;
     }
 
-    public double getTemperarture() {
-        return temperarture;
+    public double getTemp() {
+        return temp;
     }
 
-    public void setTemperarture(double temperarture) {
-        this.temperarture = temperarture;
+    public void setTemp(double temp) {
+        this.temp = temp;
     }
-    
+
+    public Medicine getMed() {
+        return med;
+    }
+
+    public void setMed(Medicine med) {
+        this.med = med;
+    }
     @Override
     public String toString(){
-        return String.valueOf(this.observationId);
+        return String.valueOf(this.obId);
+        
     }
+    
 }

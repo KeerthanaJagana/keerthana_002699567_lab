@@ -3,10 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI;
-
 import Model.Application;
-import Model.VitalSignsHistory;
-
+import Model.VitalSignHistory;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,16 +16,11 @@ public class CreateJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateJPanel
      */
-    Application application;
+    private Application application;
     
-    public CreateJPanel() {
-        initComponents();
-    }
-
-    CreateJPanel(Application application) {
+    CreateJPanel() {
         initComponents();
         this.application=application;
-        
     }
 
     /**
@@ -38,64 +32,107 @@ public class CreateJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        createObservationId = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        temp = new javax.swing.JTextField();
-        bloodPressure = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        addObs = new javax.swing.JButton();
+        addBtn = new javax.swing.JButton();
+        id = new javax.swing.JTextField();
+        temp = new javax.swing.JTextField();
+        bp = new javax.swing.JTextField();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(createObservationId, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 68, 144, -1));
+        jLabel1.setText("Id");
 
-        jLabel1.setText("CREATE A VITAL SIGN");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 6, 162, 35));
+        jLabel2.setText("Temp");
 
-        jLabel2.setText("ID");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 73, -1, -1));
-        add(temp, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 150, 144, -1));
-        add(bloodPressure, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 228, 144, -1));
+        jLabel3.setText("BP");
 
-        jLabel3.setText("TEMPERARTURE");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 155, -1, -1));
-
-        jLabel4.setText("BLOOD PRESSURE");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 238, -1, -1));
-
-        addObs.setText("ADD OBSERVATION");
-        addObs.addActionListener(new java.awt.event.ActionListener() {
+        addBtn.setText("ADD");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addObsActionPerformed(evt);
+                addBtnActionPerformed(evt);
             }
         });
-        add(addObs, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 358, -1, -1));
+
+        id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addGap(73, 73, 73)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(temp, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                                    .addComponent(bp)
+                                    .addComponent(id)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(addBtn)))
+                .addContainerGap(504, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(135, 135, 135)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(temp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(bp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(114, 114, 114)
+                .addComponent(addBtn)
+                .addContainerGap(262, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addObsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addObsActionPerformed
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_idActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+
+        // TODO add your handling code here:
+        VitalSignHistory history=this.application.getHistory();
         
-        VitalSignsHistory history = this.application.getHistory();
+        String id1=id.getText();
+        String temp1=temp.getText();
+        String bloodTemp=bp.getText();
         
-        //read the fields
-        String id =createObservationId.getText();
-        String temperature=temp.getText();
-        String bloodP=bloodPressure.getText();
+        //converting casting
         
-        history.createObservation(Integer.valueOf(id),Double.valueOf(bloodP),Double.valueOf(temperature));
+        history.createObservation(Integer.valueOf(id1), Double.valueOf(temp1), Double.valueOf(bloodTemp));
         
-    }//GEN-LAST:event_addObsActionPerformed
+        JOptionPane.showMessageDialog(null, "Observation added successfully");
+        
+    }//GEN-LAST:event_addBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addObs;
-    private javax.swing.JTextField bloodPressure;
-    private javax.swing.JTextField createObservationId;
+    private javax.swing.JButton addBtn;
+    private javax.swing.JTextField bp;
+    private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField temp;
     // End of variables declaration//GEN-END:variables
 }

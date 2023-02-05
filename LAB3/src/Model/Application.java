@@ -9,15 +9,14 @@ package Model;
  * @author keerthanajagana
  */
 public class Application {
-    VitalSignsHistory history;//object class
+    VitalSignHistory history;
     MedicineCatalog catalog;
 
-   
-    public VitalSignsHistory getHistory() {
+    public VitalSignHistory getHistory() {
         return history;
     }
 
-    public void setHistory(VitalSignsHistory history) {
+    public void setHistory(VitalSignHistory history) {
         this.history = history;
     }
 
@@ -28,12 +27,8 @@ public class Application {
     public void setCatalog(MedicineCatalog catalog) {
         this.catalog = catalog;
     }
-    
-    
-    public Application(){//deafult constructir
-        
-        this.catalog = new MedicineCatalog();
-        this.history=new VitalSignsHistory();
-    }
-    
+    public Application(){
+        this.catalog=new MedicineCatalog();
+        this.history=new VitalSignHistory();
+}
 }
