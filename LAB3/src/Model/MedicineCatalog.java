@@ -51,6 +51,7 @@ public class MedicineCatalog {
                 this.medList.remove(med);
                     break;
             }
-        }}
+        }
+    }
     
 }

@@ -44,7 +44,6 @@ public class VitalSignHistory {
         
         this.vitalSignHistory.add(observation);
         
-        
         return observation;
         
     }

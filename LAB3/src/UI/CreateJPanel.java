@@ -18,10 +18,12 @@ public class CreateJPanel extends javax.swing.JPanel {
      */
     private Application application;
     
-    CreateJPanel() {
+    CreateJPanel(Application application) {
         initComponents();
         this.application=application;
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,6 +41,8 @@ public class CreateJPanel extends javax.swing.JPanel {
         id = new javax.swing.JTextField();
         temp = new javax.swing.JTextField();
         bp = new javax.swing.JTextField();
+
+        setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setText("Id");
 
@@ -81,7 +85,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(114, 114, 114)
                         .addComponent(addBtn)))
-                .addContainerGap(504, Short.MAX_VALUE))
+                .addContainerGap(514, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

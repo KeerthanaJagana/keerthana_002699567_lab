@@ -46,6 +46,8 @@ public class CatalogJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         medCatTable = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+
         addBtn.setText("ADD");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

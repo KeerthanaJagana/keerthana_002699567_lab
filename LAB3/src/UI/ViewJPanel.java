@@ -4,6 +4,12 @@
  */
 package UI;
 
+import Model.Application;
+import Model.Observation;
+import Model.VitalSignHistory;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author keerthanajagana
@@ -13,9 +19,19 @@ public class ViewJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewJPanel
      */
-    public ViewJPanel() {
+    private Application application;
+    DefaultTableModel viewtableModel;
+    Observation selectedObservation;
+    ViewJPanel(Application application) {
         initComponents();
+        this.application=application;
+        this.viewtableModel= (DefaultTableModel) obTable.getModel();
+        displayObservation();
     }
+
+    
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,19 +42,182 @@ public class ViewJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        id = new javax.swing.JTextField();
+        temp = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        obTable = new javax.swing.JTable();
+        updateBtn = new javax.swing.JButton();
+        view = new javax.swing.JButton();
+        bp = new javax.swing.JTextField();
+
+        setBackground(new java.awt.Color(182, 189, 242));
+
+        id.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                idFocusLost(evt);
+            }
+        });
+        id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idActionPerformed(evt);
+            }
+        });
+
+        obTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Dosage"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(obTable);
+
+        updateBtn.setText("Update Oservation");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
+
+        view.setText("View");
+        view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(493, 493, 493)
+                        .addComponent(view)
+                        .addGap(186, 186, 186))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(109, 109, 109)
+                                .addComponent(updateBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(temp, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bp, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(72, 72, 72)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(temp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(bp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(updateBtn))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addComponent(view)
+                .addContainerGap(87, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void idFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_idFocusLost
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_idFocusLost
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        // TODO add your handling code here:
+        if(!id.getText().isEmpty()){
+            Observation o=this.application.getHistory().findObservation(Integer.valueOf(id.getText()));
+            o.setBp(Double.valueOf(bp.getText()));
+            o.setTemp(Double.valueOf(temp.getText()));
+            
+            
+        
+        //dng below is fine
+        //this.selectedObservation.setBloodPressure(Double.valueOf(fieldBP.getText()));
+        //this.selectedObservation.setTemperature(Double.valueOf(fieldTemp.getText()));
+        }
+        else {
+            JOptionPane.showMessageDialog(null,"u didnot made any selection");
+        }
+    }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewActionPerformed
+        // TODO add your handling code here:
+        
+        int selectedRow=obTable.getSelectedRow();
+        
+        if(selectedRow >=0) {
+            Observation observation = (Observation) obTable.getValueAt(selectedRow, 0);
+            
+            id.setText(String.valueOf(observation.getObId()));
+            temp.setText(String.valueOf(observation.getTemp()));
+            bp.setText(String.valueOf(observation.getBp()));
+            
+            
+        } else{
+            JOptionPane.showMessageDialog(null, "pls select row");
+        }
+    }//GEN-LAST:event_viewActionPerformed
+
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idActionPerformed
+public void displayObservation(){
+        VitalSignHistory history=this.application.getHistory();
+        
+        if(history.getVitalSignHistory().size() > 0){
+            
+            viewtableModel.setRowCount(0);
+            
+            for(Observation o : history.getVitalSignHistory()){
+               
+                //no.of columns in table=3
+                
+                Object row[]=new Object[3];
+                row[0]=o;
+                row[1]=o.getBp();
+                row[2]=o.getTemp();
+                
+                viewtableModel.addRow(row);
+               
+                
+            }
+        } else {
+            System.out.println("Empty list");
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField bp;
+    private javax.swing.JTextField id;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable obTable;
+    private javax.swing.JTextField temp;
+    private javax.swing.JButton updateBtn;
+    private javax.swing.JButton view;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI;
-
+import Model.Application;
+import Model.VitalSignHistory;
+import javax.swing.JOptionPane;
+import Model.Observation;
+import Model.Medicine;
+import java.util.ArrayList;
 /**
  *
  * @author keerthanajagana
@@ -13,9 +18,14 @@ public class MedicineAssignJPanel extends javax.swing.JPanel {
     /**
      * Creates new form MedicineAssignJPanel
      */
-    public MedicineAssignJPanel() {
+    private Application application;
+    MedicineAssignJPanel(Application application) {
         initComponents();
+        this.application=application;
+        populateDropdown();
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,19 +36,81 @@ public class MedicineAssignJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        medicineBox = new javax.swing.JComboBox();
+        obBox = new javax.swing.JComboBox();
+        assignBtn = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(243, 214, 214));
+
+        obBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                obBoxActionPerformed(evt);
+            }
+        });
+
+        assignBtn.setText("Assign");
+        assignBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(medicineBox, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(obBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(282, 282, 282)
+                        .addComponent(assignBtn)))
+                .addContainerGap(370, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(medicineBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(obBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addComponent(assignBtn)
+                .addContainerGap(225, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void obBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_obBoxActionPerformed
+
+    private void assignBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignBtnActionPerformed
+        // TODO add your handling code here:
+        Observation o= (Observation)  obBox.getSelectedItem();
+        Medicine m= (Medicine) medicineBox.getSelectedItem();
+        
+        o.setMed(m);
+    }//GEN-LAST:event_assignBtnActionPerformed
+public void populateDropdown(){
+ArrayList<Medicine> medicines = this.application.getCatalog().getMedList();
+        ArrayList<Observation> observations = this.application.getHistory().getVitalSignHistory();
+        
+        for(Observation o : observations){
+            obBox.addItem(o);
+        }
+        
+        for(Medicine med: medicines){
+            medicineBox.addItem(med);
+        }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton assignBtn;
+    private javax.swing.JComboBox medicineBox;
+    private javax.swing.JComboBox obBox;
     // End of variables declaration//GEN-END:variables
 }
